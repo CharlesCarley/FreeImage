@@ -1,24 +1,64 @@
 
-
+# -----------------------------------------------------------------
 if (FreeImage_BMP)
     set(FreeImage_BMP_SRC
         FreeImage/PluginBMP.cpp
     )
+else ()
+    set(FreeImage_BMP_SRC
+        Stubs/PluginBMP.cpp
+    )
 endif()
 
+if (FreeImage_CUT)
+    set(FreeImage_CUT_SRC
+        FreeImage/PluginCUT.cpp
+    )
+else ()
+    set(FreeImage_CUT_SRC
+        Stubs/PluginCUT.cpp
+    )
+endif()
+
+
+if (FreeImage_DDS)
+    set(FreeImage_DDS_SRC
+        FreeImage/PluginDDS.cpp
+    )
+else ()
+    set(FreeImage_DDS_SRC
+        Stubs/PluginDDS.cpp
+    )
+endif()
+
+
+if (FreeImage_EXR)
+    set(FreeImage_EXR_SRC
+        FreeImage/PluginEXR.cpp
+    )
+else ()
+    set(FreeImage_EXR_SRC
+        Stubs/PluginEXR.cpp
+    )
+endif()
+
+# -----------------------------------------------------------------
 if (FreeImage_TARGA)
     set(FreeImage_TARGA_SRC
         FreeImage/PluginTARGA.cpp
+    )
+else ()
+    set(FreeImage_TARGA_SRC
+        Stubs/PluginTARGA.cpp
     )
 endif()
 
 
 set(FreeImage_PLUGINS
     ${FreeImage_BMP_SRC}
-    ${FreeImage_TARGA_SRC}
-    #FreeImage/PluginCUT.cpp
-    #FreeImage/PluginDDS.cpp
-    #FreeImage/PluginEXR.cpp
+    ${FreeImage_CUT_SRC}
+    ${FreeImage_DDS_SRC}
+    ${FreeImage_EXR_SRC}
     #FreeImage/PluginG3.cpp
     #FreeImage/PluginGIF.cpp
     #FreeImage/PluginHDR.cpp
@@ -41,6 +81,7 @@ set(FreeImage_PLUGINS
     #FreeImage/PluginRAS.cpp
     #FreeImage/PluginRAW.cpp
     #FreeImage/PluginSGI.cpp
+    ${FreeImage_TARGA_SRC}
     #FreeImage/PluginTIFF.cpp
     #FreeImage/PluginWBMP.cpp
     #FreeImage/PluginWebP.cpp
@@ -88,6 +129,29 @@ set(FreeImage_SOURCE
     FreeImage/ToneMapping.cpp
     FreeImage/WuQuantizer.cpp
     FreeImage/ZLibInterface.cpp
+
+
+    Metadata/Exif.cpp
+    Metadata/FIRational.cpp
+    Metadata/FreeImageTag.cpp
+    Metadata/IPTC.cpp
+    Metadata/TagConversion.cpp
+    Metadata/TagLib.cpp
+    Metadata/XTIFF.cpp
+
+
+    FreeImageToolkit/Background.cpp
+    FreeImageToolkit/BSplineRotate.cpp
+    FreeImageToolkit/Channels.cpp
+    FreeImageToolkit/ClassicRotate.cpp
+    FreeImageToolkit/Colors.cpp
+    FreeImageToolkit/CopyPaste.cpp
+    FreeImageToolkit/Display.cpp
+    FreeImageToolkit/Flip.cpp
+    FreeImageToolkit/JPEGTransform.cpp
+    FreeImageToolkit/MultigridPoissonSolver.cpp
+    FreeImageToolkit/Rescale.cpp
+    FreeImageToolkit/Resize.cpp
 )
 
 
@@ -103,6 +167,13 @@ set(FreeImage_HEADER
     Utilities.h
     FreeImage/J2KHelper.h
     FreeImage/PSDParser.h
+
+    Metadata/FIRational.h
+    Metadata/FreeImageTag.h
+
+    FreeImageToolkit/Filters.h
+    FreeImageToolkit/Resize.h
+
 )
 
 
