@@ -8,11 +8,11 @@ macro(SetPlugin_SOURCE TAR Plugin)
 
     if (FreeImage_${Plugin})
         message(STATUS "-- Using Plugin ${Plugin}")
+        add_definitions(-DFreeImage_${Plugin})
         set(FreeImage_${Plugin}_SRC
             FreeImage/Plugin${Plugin}.cpp
         )
     else ()
-        message(STATUS "-- Skipping Plugin ${Plugin}")
         set(FreeImage_${Plugin}_SRC
             Stubs/Plugin${Plugin}.cpp
         )
@@ -21,14 +21,16 @@ macro(SetPlugin_SOURCE TAR Plugin)
     list(APPEND ${TAR} ${FreeImage_${Plugin}_SRC})
 
 endmacro()
-
-
+SetPlugin_SOURCE(FreeImage_PLUGINS XBM)
+SetPlugin_SOURCE(FreeImage_PLUGINS XPM)
+SetPlugin_SOURCE(FreeImage_PLUGINS TARGA)
 SetPlugin_SOURCE(FreeImage_PLUGINS BMP)
 SetPlugin_SOURCE(FreeImage_PLUGINS CUT)
 SetPlugin_SOURCE(FreeImage_PLUGINS DDS)
+SetPlugin_SOURCE(FreeImage_PLUGINS GIF)
+
 SetPlugin_SOURCE(FreeImage_PLUGINS EXR)
 SetPlugin_SOURCE(FreeImage_PLUGINS G3)
-SetPlugin_SOURCE(FreeImage_PLUGINS GIF)
 SetPlugin_SOURCE(FreeImage_PLUGINS HDR)
 SetPlugin_SOURCE(FreeImage_PLUGINS ICO)
 SetPlugin_SOURCE(FreeImage_PLUGINS IFF)
@@ -50,12 +52,9 @@ SetPlugin_SOURCE(FreeImage_PLUGINS PFM)
 SetPlugin_SOURCE(FreeImage_PLUGINS RAS)
 SetPlugin_SOURCE(FreeImage_PLUGINS RAW)
 SetPlugin_SOURCE(FreeImage_PLUGINS SGI)
-SetPlugin_SOURCE(FreeImage_PLUGINS TARGA)
 SetPlugin_SOURCE(FreeImage_PLUGINS TIFF)
 SetPlugin_SOURCE(FreeImage_PLUGINS WBMP)
 SetPlugin_SOURCE(FreeImage_PLUGINS WebP)
-SetPlugin_SOURCE(FreeImage_PLUGINS XBM)
-SetPlugin_SOURCE(FreeImage_PLUGINS XPM)
 
 
 set(FreeImage_SOURCE
