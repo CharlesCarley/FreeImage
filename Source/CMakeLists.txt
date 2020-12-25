@@ -1,93 +1,61 @@
 
-# -----------------------------------------------------------------
-if (FreeImage_BMP)
-    set(FreeImage_BMP_SRC
-        FreeImage/PluginBMP.cpp
-    )
-else ()
-    set(FreeImage_BMP_SRC
-        Stubs/PluginBMP.cpp
-    )
-endif()
 
-if (FreeImage_CUT)
-    set(FreeImage_CUT_SRC
-        FreeImage/PluginCUT.cpp
-    )
-else ()
-    set(FreeImage_CUT_SRC
-        Stubs/PluginCUT.cpp
-    )
-endif()
+set(FreeImage_PLUGINS )
+
+macro(SetPlugin_SOURCE TAR Plugin)
+    option(FreeImage_${Plugin} "Build the ${Plugin} plugin" OFF)
 
 
-if (FreeImage_DDS)
-    set(FreeImage_DDS_SRC
-        FreeImage/PluginDDS.cpp
-    )
-else ()
-    set(FreeImage_DDS_SRC
-        Stubs/PluginDDS.cpp
-    )
-endif()
+    if (FreeImage_${Plugin})
+        message(STATUS "-- Using Plugin ${Plugin}")
+        set(FreeImage_${Plugin}_SRC
+            FreeImage/Plugin${Plugin}.cpp
+        )
+    else ()
+        message(STATUS "-- Skipping Plugin ${Plugin}")
+        set(FreeImage_${Plugin}_SRC
+            Stubs/Plugin${Plugin}.cpp
+        )
+    endif()
+    
+    list(APPEND ${TAR} ${FreeImage_${Plugin}_SRC})
+
+endmacro()
 
 
-if (FreeImage_EXR)
-    set(FreeImage_EXR_SRC
-        FreeImage/PluginEXR.cpp
-    )
-else ()
-    set(FreeImage_EXR_SRC
-        Stubs/PluginEXR.cpp
-    )
-endif()
-
-# -----------------------------------------------------------------
-if (FreeImage_TARGA)
-    set(FreeImage_TARGA_SRC
-        FreeImage/PluginTARGA.cpp
-    )
-else ()
-    set(FreeImage_TARGA_SRC
-        Stubs/PluginTARGA.cpp
-    )
-endif()
-
-
-set(FreeImage_PLUGINS
-    ${FreeImage_BMP_SRC}
-    ${FreeImage_CUT_SRC}
-    ${FreeImage_DDS_SRC}
-    ${FreeImage_EXR_SRC}
-    #FreeImage/PluginG3.cpp
-    #FreeImage/PluginGIF.cpp
-    #FreeImage/PluginHDR.cpp
-    #FreeImage/PluginICO.cpp
-    #FreeImage/PluginIFF.cpp
-    #FreeImage/PluginJ2K.cpp
-    #FreeImage/PluginJNG.cpp
-    #FreeImage/PluginJP2.cpp
-    #FreeImage/PluginJPEG.cpp
-    #FreeImage/PluginJXR.cpp
-    #FreeImage/PluginKOALA.cpp
-    #FreeImage/PluginMNG.cpp
-    #FreeImage/PluginPCD.cpp
-    #FreeImage/PluginPCX.cpp
-    #FreeImage/PluginPFM.cpp
-    #FreeImage/PluginPICT.cpp
-    #FreeImage/PluginPNG.cpp
-    #FreeImage/PluginPNM.cpp
-    #FreeImage/PluginPSD.cpp
-    #FreeImage/PluginRAS.cpp
-    #FreeImage/PluginRAW.cpp
-    #FreeImage/PluginSGI.cpp
-    ${FreeImage_TARGA_SRC}
-    #FreeImage/PluginTIFF.cpp
-    #FreeImage/PluginWBMP.cpp
-    #FreeImage/PluginWebP.cpp
-    #FreeImage/PluginXBM.cpp
-    #FreeImage/PluginXPM.cpp
-)
+SetPlugin_SOURCE(FreeImage_PLUGINS BMP)
+SetPlugin_SOURCE(FreeImage_PLUGINS CUT)
+SetPlugin_SOURCE(FreeImage_PLUGINS DDS)
+SetPlugin_SOURCE(FreeImage_PLUGINS EXR)
+SetPlugin_SOURCE(FreeImage_PLUGINS G3)
+SetPlugin_SOURCE(FreeImage_PLUGINS GIF)
+SetPlugin_SOURCE(FreeImage_PLUGINS HDR)
+SetPlugin_SOURCE(FreeImage_PLUGINS ICO)
+SetPlugin_SOURCE(FreeImage_PLUGINS IFF)
+SetPlugin_SOURCE(FreeImage_PLUGINS J2K)
+SetPlugin_SOURCE(FreeImage_PLUGINS JNG)
+SetPlugin_SOURCE(FreeImage_PLUGINS JP2)
+SetPlugin_SOURCE(FreeImage_PLUGINS JPEG)
+SetPlugin_SOURCE(FreeImage_PLUGINS JXR)
+SetPlugin_SOURCE(FreeImage_PLUGINS KOALA)
+SetPlugin_SOURCE(FreeImage_PLUGINS MNG)
+SetPlugin_SOURCE(FreeImage_PLUGINS PCD)
+SetPlugin_SOURCE(FreeImage_PLUGINS PCX)
+SetPlugin_SOURCE(FreeImage_PLUGINS PFM)
+SetPlugin_SOURCE(FreeImage_PLUGINS PSD)
+SetPlugin_SOURCE(FreeImage_PLUGINS PICT)
+SetPlugin_SOURCE(FreeImage_PLUGINS PNG)
+SetPlugin_SOURCE(FreeImage_PLUGINS PNM)
+SetPlugin_SOURCE(FreeImage_PLUGINS PFM)
+SetPlugin_SOURCE(FreeImage_PLUGINS RAS)
+SetPlugin_SOURCE(FreeImage_PLUGINS RAW)
+SetPlugin_SOURCE(FreeImage_PLUGINS SGI)
+SetPlugin_SOURCE(FreeImage_PLUGINS TARGA)
+SetPlugin_SOURCE(FreeImage_PLUGINS TIFF)
+SetPlugin_SOURCE(FreeImage_PLUGINS WBMP)
+SetPlugin_SOURCE(FreeImage_PLUGINS WebP)
+SetPlugin_SOURCE(FreeImage_PLUGINS XBM)
+SetPlugin_SOURCE(FreeImage_PLUGINS XPM)
 
 
 set(FreeImage_SOURCE
@@ -191,8 +159,8 @@ set(TargetName_SOURCE
     ${FreeImage_PLUGINS}
 )
 
-add_definitions(${FreeImage_DEF} -D_CRT_SECURE_NO_WARNINGS)
-include_directories(.)
+add_definitions(${FreeImage_DEF} -D_CRT_SECURE_NO_WARNINGS -DLIBRAW_NODLL)
+include_directories(. OpenEXR OpenEXR/Imath)
 
 
 add_library(

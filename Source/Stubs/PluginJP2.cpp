@@ -6,15 +6,15 @@
 #include "Utilities.h"
 static const char *DLL_CALLCONV
 Format() {
-    return "TARGA";
+    return "JP2";
 }
 static const char *DLL_CALLCONV
 Description() {
-    return "Truevision Targa";
+    return "JPEG-2000 File Format";
 }
 static const char *DLL_CALLCONV
 Extension() {
-    return "tga,targa";
+    return "jp2";
 }
 static const char *DLL_CALLCONV
 RegExpr() {
@@ -22,7 +22,7 @@ RegExpr() {
 }
 static const char *DLL_CALLCONV
 MimeType() {
-    return "image/x-tga";
+    return "image/jp2";
 }
 static BOOL DLL_CALLCONV
 Validate(FreeImageIO *io, fi_handle handle) {
@@ -56,11 +56,11 @@ Save(FreeImageIO *io, FIBITMAP *dib, fi_handle handle, int page, int flags, void
     return FALSE;
 }
 void DLL_CALLCONV
-InitTARGA(Plugin *plugin, int format_id) {
+InitJP2(Plugin *plugin, int format_id) {
     plugin->format_proc = Format;
     plugin->description_proc = Description;
     plugin->extension_proc = Extension;
-    plugin->regexpr_proc = RegExpr;
+    plugin->regexpr_proc = NULL;
     plugin->open_proc = Open;
     plugin->close_proc = Close;
     plugin->pagecount_proc = PageCount;

@@ -1,329 +1,65 @@
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitCUT(struct Plugin *plugin, int format_id)
-{
+// This file is NOT a part of FreeImage
+// It is a stub file created to conditionally
+// add support for individual plug-ins
+// https://github.com/CharlesCarley/FreeImage
+#include "FreeImage.h"
+#include "Utilities.h"
+static const char *DLL_CALLCONV
+Format() {
+    return "CUT";
 }
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitICO(struct Plugin *plugin, int format_id)
-{
+static const char *DLL_CALLCONV
+Description() {
+    return "Dr. Halo";
 }
-
-
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitIFF(struct Plugin *plugin, int format_id)
-{
+static const char *DLL_CALLCONV
+Extension() {
+    return "cut";
 }
-
-
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitJPEG(struct Plugin *plugin, int format_id)
-{
+static const char *DLL_CALLCONV
+RegExpr() {
+    return NULL;
 }
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitKOALA(struct Plugin *plugin, int format_id)
-{
+static const char *DLL_CALLCONV
+MimeType() {
+    return "image/x-cut";
 }
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitMNG(struct Plugin *plugin, int format_id)
-{
+static BOOL DLL_CALLCONV
+Validate(FreeImageIO *io, fi_handle handle) {
+    return FALSE;
 }
-
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPCD(struct Plugin *plugin, int format_id)
-{
+static BOOL DLL_CALLCONV
+SupportsExportDepth(int depth) {
+    return FALSE;
 }
-
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPCX(struct Plugin *plugin, int format_id)
-{
+static BOOL DLL_CALLCONV
+SupportsExportType(FREE_IMAGE_TYPE type) {
+    return FALSE;
 }
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPNG(struct Plugin *plugin, int format_id)
-{
+static BOOL DLL_CALLCONV
+SupportsNoPixels() {
+    return TRUE;
 }
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPNM(struct Plugin *plugin, int format_id)
-{
+static FIBITMAP *DLL_CALLCONV
+Load(FreeImageIO *io, fi_handle handle, int page, int flags, void *data) {
+    return NULL;
 }
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPSD(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitRAS(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitTIFF(struct Plugin *plugin, int format_id)
-{
-}
-
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitWBMP(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitXBM(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitXPM(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitDDS(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitGIF(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitHDR(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitG3(struct Plugin *plugin, int format_id)
-{
-}
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitSGI(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitEXR(struct Plugin *plugin, int format_id)
-{
-}
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitJ2K(struct Plugin *plugin, int format_id)
-{
-}
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitJP2(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPFM(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitPICT(struct Plugin *plugin, int format_id)
-{
-}
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitRAW(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitJNG(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitWEBP(struct Plugin *plugin, int format_id)
-{
-}
-
-
-// Added to Individually compile static plug-ins
-// By Charles Carley
-// https://github.com/CharlesCarley/FreeImage.git
-
-#include "Plugin.h"
-
-void InitJXR(struct Plugin *plugin, int format_id)
-{
+void DLL_CALLCONV
+InitCUT(Plugin *plugin, int format_id) {
+    plugin->format_proc = Format;
+    plugin->description_proc = Description;
+    plugin->extension_proc = Extension;
+    plugin->regexpr_proc = RegExpr;
+    plugin->open_proc = NULL;
+    plugin->close_proc = NULL;
+    plugin->pagecount_proc = NULL;
+    plugin->pagecapability_proc = NULL;
+    plugin->load_proc = Load;
+    plugin->save_proc = NULL;
+    plugin->validate_proc = Validate;
+    plugin->mime_proc = MimeType;
+    plugin->supports_export_bpp_proc = SupportsExportDepth;
+    plugin->supports_export_type_proc = SupportsExportType;
+    plugin->supports_icc_profiles_proc = NULL;
+    plugin->supports_no_pixels_proc = SupportsNoPixels;
 }
