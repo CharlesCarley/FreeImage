@@ -1,13 +1,11 @@
-
-
 set(FreeImage_PLUGINS )
+subdirs(ZLib)
 
 macro(SetPlugin_SOURCE TAR Plugin)
     option(FreeImage_${Plugin} "Build the ${Plugin} plugin" OFF)
 
-
     if (FreeImage_${Plugin})
-        message(STATUS "-- Using Plugin ${Plugin}")
+        message(STATUS "   FreeImage ==> Using Plugin ${Plugin}")
         add_definitions(-DFreeImage_${Plugin})
         set(FreeImage_${Plugin}_SRC
             FreeImage/Plugin${Plugin}.cpp
@@ -28,7 +26,6 @@ SetPlugin_SOURCE(FreeImage_PLUGINS BMP)
 SetPlugin_SOURCE(FreeImage_PLUGINS CUT)
 SetPlugin_SOURCE(FreeImage_PLUGINS DDS)
 SetPlugin_SOURCE(FreeImage_PLUGINS GIF)
-
 SetPlugin_SOURCE(FreeImage_PLUGINS EXR)
 SetPlugin_SOURCE(FreeImage_PLUGINS G3)
 SetPlugin_SOURCE(FreeImage_PLUGINS HDR)
@@ -140,32 +137,48 @@ set(FreeImage_HEADER
 
     FreeImageToolkit/Filters.h
     FreeImageToolkit/Resize.h
-
 )
 
+set(FreeImage_EXTRAS )
+set(FreeImage_DEPS )
 
-if(MSVC)
-    source_group("Base\\Header" FILES ${FreeImage_HEADER})
-    source_group("Base\\Source" FILES ${FreeImage_SOURCE})
-    source_group("Plugins" FILES ${FreeImage_PLUGINS})
+if (FreeImage_EXR)
+	subdirs(OpenEXR)
+	include_directories(OpenEXR 
+		OpenEXR/Half 
+		OpenEXR/Iex 
+		OpenEXR/IlmImf
+		OpenEXR/IlmThread 
+		OpenEXR/Imath
+		ZLib)
+
+    list(APPEND FreeImage_DEPS OpenEXR ZLib)
 endif()
 
+if (FreeImage_JPEG)
+	subdirs(LibJPEG)
+	include_directories(LibJPEG  ZLib)
+    list(APPEND FreeImage_DEPS LibJPEG  ZLib)
+endif()
 
 
 set(TargetName_SOURCE
     ${FreeImage_SOURCE}  
     ${FreeImage_HEADER}
     ${FreeImage_PLUGINS}
+    ${FreeImage_EXTRAS}
 )
 
 add_definitions(${FreeImage_DEF} -D_CRT_SECURE_NO_WARNINGS -DLIBRAW_NODLL)
-include_directories(. OpenEXR OpenEXR/Imath)
+include_directories(.)
 
 
 add_library(
     ${TargetName} 
     ${TargetName_SOURCE}
 )
+
+target_link_libraries(${TargetName} ${FreeImage_DEPS})
 
 if (TargetFolders)
     set_target_properties(${TargetName} PROPERTIES FOLDER "${TargetGroup}")
