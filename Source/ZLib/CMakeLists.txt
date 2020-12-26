@@ -30,8 +30,10 @@ set(ZLIB_SRCS
     zutil.h
 )
 
+add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE)
 include_directories(.)
 add_library(${TargetName} ${ZLIB_SRCS})
+
 if (TargetFolders)
 	set_target_properties(${TargetName} PROPERTIES FOLDER "${FreeImage_TargetGroup}/Dependencies")
 endif()

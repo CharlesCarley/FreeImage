@@ -162,6 +162,20 @@ if (FreeImage_JPEG)
 endif()
 
 
+if (FreeImage_J2K)
+	subdirs(LibOpenJPEG)
+	include_directories(LibOpenJPEG)
+    list(APPEND FreeImage_DEPS LibOpenJPEG)
+endif()
+
+
+if (FreeImage_PNG)
+    subdirs(LibPNG)
+	include_directories(LibPNG)
+    list(APPEND FreeImage_DEPS LibPNG ZLib)
+endif()
+
+
 set(TargetName_SOURCE
     ${FreeImage_SOURCE}  
     ${FreeImage_HEADER}
@@ -169,7 +183,7 @@ set(TargetName_SOURCE
     ${FreeImage_EXTRAS}
 )
 
-add_definitions(${FreeImage_DEF} -D_CRT_SECURE_NO_WARNINGS -DLIBRAW_NODLL)
+add_definitions(${FreeImage_DEF} -D_CRT_SECURE_NO_WARNINGS -DLIBRAW_NODLL -DOPJ_STATIC)
 include_directories(.)
 
 
