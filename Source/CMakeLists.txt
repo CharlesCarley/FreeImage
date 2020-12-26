@@ -157,8 +157,8 @@ set(TargetName_SOURCE
     ${FreeImage_HEADER}
     ${FreeImage_PLUGINS}
 )
-
-add_definitions(${FreeImage_DEF} -D_CRT_SECURE_NO_WARNINGS -DLIBRAW_NODLL)
+add_definitions(-DFREEIMAGE_LIB)
+add_definitions(-D_CRT_SECURE_NO_WARNINGS -DLIBRAW_NODLL)
 include_directories(. OpenEXR OpenEXR/Imath)
 
 

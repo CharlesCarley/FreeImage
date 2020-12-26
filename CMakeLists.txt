@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(FreeImage)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(FreeImage_DEF -DFREEIMAGE_LIB)
 option(FreeImage_BMP    "Build with BMP support." ON)
