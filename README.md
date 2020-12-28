@@ -6,6 +6,10 @@ This is a modified version with a CMake build system.
 
 The CMake system will allow building partial plugin support by stubbing individual plugins that are not in use.
 
+#### Note
+
+At the moment not all loaders have been setup to build (it's on an on needed basis)
+
 ## Building
 
 Building with CMake
