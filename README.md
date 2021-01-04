@@ -8,7 +8,7 @@ The CMake system will allow building partial plugin support by stubbing individu
 
 #### Note
 
-At the moment not all loaders have been setup to build (it's on an on needed basis)
+At the moment not all loaders have been setup to build (it's on an as needed basis)
 
 ## Building
 
