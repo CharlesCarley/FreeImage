@@ -6,7 +6,7 @@ This is a modified version with a CMake build system.
 
 The CMake system will allow building partial plugin support by stubbing individual plugins that are not in use.
 
-#### Note
+## Note
 
 At the moment not all loaders have been setup to build (it's on an as needed basis)
 
@@ -25,11 +25,12 @@ cmake ..
 ```txt
 -DFreeImage_BMP   = ON
 -DFreeImage_TARGA = ON
--DFreeImage_GIF   = ON
--DFreeImage_XPM   = ON
 -DFreeImage_PNG   = ON
--DFreeImage_ICO   = ON
--DFreeImage_PSD   = ON
+-DFreeImage_JPEG  = ON
+-DFreeImage_GIF   = OFF
+-DFreeImage_XPM   = OFF
+-DFreeImage_ICO   = OFF
+-DFreeImage_PSD   = OFF
 -DFreeImage_CUT   = OFF
 -DFreeImage_DDS   = OFF
 -DFreeImage_XBM   = OFF
@@ -40,7 +41,6 @@ cmake ..
 -DFreeImage_J2K   = OFF
 -DFreeImage_JNG   = OFF
 -DFreeImage_JP2   = OFF
--DFreeImage_JPEG  = OFF
 -DFreeImage_JXR   = OFF
 -DFreeImage_KOALA = OFF
 -DFreeImage_MNG   = OFF
