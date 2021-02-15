@@ -407,6 +407,7 @@ public:
 	/// Destructor
 	~TagLib();
 
+	static void finalize();
 	/**
 	@return Returns a reference to the TagLib instance
 	*/

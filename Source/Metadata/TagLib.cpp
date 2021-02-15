@@ -1509,10 +1509,17 @@ TagLib::~TagLib() {
 }
 
 
+
+void TagLib::finalize() {
+    static TagLib *s = &instance();
+    delete s;
+    s = nullptr;
+}
+
 TagLib& 
 TagLib::instance() {
-	static TagLib s;
-	return s;
+	static TagLib *s = new TagLib();
+	return *s;
 }
 
 const TagInfo* 
