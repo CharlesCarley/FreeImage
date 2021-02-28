@@ -5,7 +5,9 @@ macro(SetPlugin_SOURCE TAR Plugin)
     option(FreeImage_${Plugin} "Build the ${Plugin} plugin" OFF)
 
     if (FreeImage_${Plugin})
-        message(STATUS "   FreeImage ==> Using Plugin ${Plugin}")
+        if (NOT FreeImage_SILENT)
+            message(STATUS "   FreeImage ==> Using Plugin ${Plugin}")
+        endif()
         add_definitions(-DFreeImage_${Plugin})
         set(FreeImage_${Plugin}_SRC
             FreeImage/Plugin${Plugin}.cpp
