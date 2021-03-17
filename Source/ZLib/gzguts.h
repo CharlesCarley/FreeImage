@@ -216,3 +216,12 @@ char ZLIB_INTERNAL *gz_strwinerror OF((DWORD error));
 unsigned ZLIB_INTERNAL gz_intmax OF((void));
 #  define GT_OFF(x) (sizeof(int) == sizeof(z_off64_t) && (x) > gz_intmax())
 #endif
+
+#if defined(_WIN32) && !defined(__BORLANDC__) && !defined(__MINGW32__)
+#else
+#if defined(_LARGEFILE64_SOURCE) && _LFS64_LARGEFILE-0
+#else
+#  include <sys/types.h>
+#  include <unistd.h>
+#endif
+#endif
